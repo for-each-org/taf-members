@@ -1,10 +1,17 @@
 # taf-members
 Members site for Tippicanoe Arts Federation.
 
-
-## Instructions to run
+## Setup
 1. Install docker and compose
-2. Run `docker-compose up`. The server should be running on port 8000
-3. To run a database migration: `docker-compose run web python manage.py migrate`
+    - If you're on a Mac, this is just `brew install docker docker-compose` (make sure you have homebrew installed).
+2. Make sure you have a docker-machine running.
+    - If you don't, you may need to `brew install docker-machine`, then run `docker-machine create default` to create a VM in which to run docker containers.
+    - After you create a `default` docker-machine, you can make sure it's running with `docker-machine ls`. If you don't see your `default` machine running in the table, then run `docker-machine start default` to start the docker-machine. (When you're done with docker you can stop the virtual machine with `docker-machine stop`.)
+3. Run `docker-compose up`. This should bring up both docker containers, labelled `web` (for Django) and `db`(for Postgres).
+    - If you see an error about not being able to connect, you may need to help docker-compose find the existing docker machines by running `eval $(docker-machine env)`. This exports variables about running docker instances to the shell. Now, `docker-compose up` should work.
+    - If you want docker to run in the background, do `docker-compose up -d`, which should daemonize the docker containers into the background.
+4. The server should be running on port 8000 on localhost.
+5. To run a database migration: `docker-compose run web python manage.py migrate`
+    - Any `./manage.py` operations should be prefixed with `docker-compose run web`. Otherwise, your computer will try to run Django outside of docker, which won't work.
 
 [Source for Docker Setup](https://docs.docker.com/compose/django/#connect-the-database)
