@@ -6,11 +6,14 @@ Members site for Tippicanoe Arts Federation.
     - [Mac](https://docs.docker.com/docker-for-mac/install/)
     - [Windows](https://docs.docker.com/docker-for-windows/install/)
     - [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-2. Run `docker-compose up` in the root directory of the project
+2. Install Node and npm/yarn
+3. Run `yarn install` - installs Javascript Dependencies
+4. Run `yarn build` - this builds the front end files to be served by Django
+5. Run `docker-compose up` in the root directory of the project
     - If a python error displays such that you can't connect to the database, exit and restart the command and it should connect
-3. The site should display at http://localhost:8000
+6. The site should display at http://localhost:8000
 
-## Setup (Mac Using Brew)
+## Docker Setup (Mac Using Brew)
 1. Install docker and compose
     - If you're on a Mac, this is just `brew install docker docker-compose` (make sure you have homebrew installed).
 2. Make sure you have a docker-machine running.
