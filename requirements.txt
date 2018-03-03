@@ -1,2 +1,3 @@
 django # Web framework
 psycopg2 # PostgreSQL driver
+djangorestframework # Token auth
